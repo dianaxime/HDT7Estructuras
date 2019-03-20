@@ -54,4 +54,14 @@ public class BST {
         //Devuelve la raiz sin modificarse
         return root; 
     } 
+    public  void inorder()  { 
+       inorderRec(root); 
+    } 
+    public void inorderRec(Nodo root) { 
+        if (root != null) { 
+            inorderRec(root.left); 
+            System.out.println(root.key); 
+            inorderRec(root.right); 
+        } 
+    } 
 }
