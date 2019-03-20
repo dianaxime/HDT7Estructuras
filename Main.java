@@ -6,7 +6,11 @@
 
 package hdt7;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 import javax.swing.JFileChooser;
 
 /**
@@ -14,6 +18,8 @@ import javax.swing.JFileChooser;
  * @author DIANA
  */
 public class Main extends javax.swing.JFrame {
+    
+    BST tree = new BST();
 
     /** Creates new form Main */
     public Main() {
@@ -146,7 +152,43 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        //Toma el texto de JtextField
+        String miarchivo= jTextField1.getText();
+        FileReader lector;
+        BufferedReader lector1;
+        String datos;
         if (jRadioButton1.isSelected()){
+           try{
+               // lee el archivo
+                lector = new FileReader(miarchivo);
+                lector1 = new BufferedReader(lector);
+                //lee una linea del archivo 
+                datos= lector1.readLine();
+                //verifica que tenga contenido
+                String keyword;
+                String valword;
+                while (datos!=null){
+                    //elimina los espacios
+                   datos = datos.replaceAll("\\(", "");
+                   datos = datos.replaceAll("\\)", "");
+                   datos = datos.replaceAll(",", "");
+                   String partes[] = datos.split(" ");
+                   //recorre las partes 
+                   for (int i=0; i<partes.length; i++){
+                       if (i%2==0){
+                           keyword = partes[i];
+                       }
+                       else{
+                           valword = partes[i];
+                       }
+                       jTextArea1.append(partes[i] + "\n");
+                   }
+                   datos= lector1.readLine();
+                }
+           }
+           catch(Exception e){
+               
+           }
            
         }
         else if (jRadioButton2.isSelected()){

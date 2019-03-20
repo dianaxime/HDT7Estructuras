@@ -64,4 +64,20 @@ public class BST {
             inorderRec(root.right); 
         } 
     } 
+    public String buscar(String item){
+        return buscarRec(root, item);
+    }
+    
+    public String buscarRec(Nodo nodo, String item){
+        if (root !=null){
+            if (comparador.compare(nodo.getkey(), item)==0){
+                return root.getkey();
+            }
+            else{
+                buscarRec(root.left, item);
+                buscarRec(root.right, item);
+            }
+        }
+        return null;
+    }
 }
