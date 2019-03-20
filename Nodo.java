@@ -9,6 +9,11 @@ package hdt7;
  *
  * @author DIANA
  */
+//Fatima Albeño 18060
+//Diana de Leon 18607
+
+
+//Clase Nodo que almacena la "clave" y su "significaado"
 public class Nodo {
     String key;
     String value;
@@ -19,4 +24,11 @@ public class Nodo {
         value = val;
         left = right = null; 
     } 
+    public String getkey (){
+        return this.key;
+    }
+    
+    public String getvalue(){
+        return this.value;
+    }
 }
