@@ -60,7 +60,7 @@ public class BST {
     public void inorderRec(Nodo root) { 
         if (root != null) { 
             inorderRec(root.left); 
-            System.out.println(root.key); 
+            Main.jTextArea1.append(root.key + root.value); 
             inorderRec(root.right); 
         } 
     } 
