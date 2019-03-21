@@ -31,4 +31,8 @@ public class Nodo {
     public String getvalue(){
         return this.value;
     }
+    
+    public String data(){
+        return this.key + " "+ this.value;
+    }
 }

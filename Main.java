@@ -165,8 +165,8 @@ public class Main extends javax.swing.JFrame {
                 //lee una linea del archivo 
                 datos= lector1.readLine();
                 //verifica que tenga contenido
-                String keyword;
-                String valword;
+                String keyword="";
+                String valword="";
                 while (datos!=null){
                     //elimina los espacios
                    datos = datos.replaceAll("\\(", "");
@@ -181,7 +181,10 @@ public class Main extends javax.swing.JFrame {
                        else{
                            valword = partes[i];
                        }
-                       jTextArea1.append(partes[i] + "\n");
+                       //jTextArea1.append(partes[i] + "\n");
+                       if (i>0){
+                            tree.insertar(keyword, valword);
+                       }
                    }
                    datos= lector1.readLine();
                 }
@@ -195,7 +198,7 @@ public class Main extends javax.swing.JFrame {
             
         }
         else if (jRadioButton3.isSelected()){
-            
+            tree.inorder();
         }
         else{
             // si no hay ninguno seleccionado muestra un mensaje de advertencia 

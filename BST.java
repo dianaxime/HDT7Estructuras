@@ -60,18 +60,19 @@ public class BST {
     public void inorderRec(Nodo root) { 
         if (root != null) { 
             inorderRec(root.left); 
-            Main.jTextArea1.append(root.key + root.value); 
+            Main.jTextArea1.append(root.data() + "\n"); 
             inorderRec(root.right); 
         } 
     } 
+    // busca el item correspondiente
     public String buscar(String item){
         return buscarRec(root, item);
     }
-    
+    //utiliza recursion para encontrar el item
     public String buscarRec(Nodo nodo, String item){
         if (root !=null){
             if (comparador.compare(nodo.getkey(), item)==0){
-                return root.getkey();
+                return root.getvalue();
             }
             else{
                 buscarRec(root.left, item);
