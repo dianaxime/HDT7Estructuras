@@ -168,7 +168,7 @@ public class Main extends javax.swing.JFrame {
                 String keyword="";
                 String valword="";
                 while (datos!=null){
-                    //elimina los espacios
+                    //elimina los espacios "(", ")" y ","
                    datos = datos.replaceAll("\\(", "");
                    datos = datos.replaceAll("\\)", "");
                    datos = datos.replaceAll(",", "");
@@ -195,6 +195,56 @@ public class Main extends javax.swing.JFrame {
            
         }
         else if (jRadioButton2.isSelected()){
+            try{
+                // lee el archivo
+                lector = new FileReader(miarchivo);
+                lector1 = new BufferedReader(lector);
+                //lee una linea del archivo 
+                datos= lector1.readLine();
+                String traducido="";
+                System.out.println(datos);
+                /*while (datos!=null){
+                    //elimina los espacios
+                    System.out.println(datos+"***");
+                   String partes[] = datos.split("");
+                   //recorre las partes 
+                   for (int k=0; k<partes.length; k++){
+                       String palabra = tree.buscar(partes[k]);
+                       System.out.println(partes[k]);
+                       System.out.println(k);
+                       //if (palabra!=null){
+                           traducido += palabra;
+                           palabra = null;
+                       //}
+                       //else{
+                           traducido += "*"+ partes[k] +"*";
+                       //}
+                       System.out.println(traducido);
+                   }
+                   datos= lector1.readLine();
+                }*/
+                Scanner input;
+                input = new Scanner(lector1);
+                while (input.hasNextLine()) {
+                    String line = input.next();
+                    System.out.println(line);
+                    String palabra = tree.buscar(line);
+                    if (palabra!=null){
+                        traducido += palabra;
+                        palabra = null;
+                    }
+                    else{
+                        traducido += "*"+ line +"*";
+                    }
+                }
+                input.close();
+                System.out.println(tree.buscar("dog"));
+                System.out.println(tree.buscar("homework"));
+                jTextArea1.append(traducido + "\n");
+            }
+            catch(Exception e){
+               
+           }
             
         }
         else if (jRadioButton3.isSelected()){

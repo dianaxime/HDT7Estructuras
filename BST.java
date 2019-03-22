@@ -66,19 +66,18 @@ public class BST {
     } 
     // busca el item correspondiente
     public String buscar(String item){
-        return buscarRec(root, item);
+        return busqueda(root, item).getvalue();
     }
     //utiliza recursion para encontrar el item
-    public String buscarRec(Nodo nodo, String item){
-        if (root !=null){
-            if (comparador.compare(nodo.getkey(), item)==0){
-                return root.getvalue();
-            }
-            else{
-                buscarRec(root.left, item);
-                buscarRec(root.right, item);
-            }
+    public Nodo busqueda(Nodo root, String item) { 
+        comparador.setStrength(Collator.SECONDARY);
+        if (root==null || comparador.compare(root.key,item)==0 ) {
+            return root;
+        } else if (comparador.compare(root.key ,item)>0){
+            return busqueda(root.left, item);
         }
-        return null;
-    }
+        else{
+            return busqueda(root.right, item);
+        } 
+    } 
 }
