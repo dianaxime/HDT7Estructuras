@@ -138,10 +138,6 @@ public class Main extends javax.swing.JFrame {
          //borra los datos del cuadro de texto
         jTextArea1.setEditable(true);
         jTextArea1.setText("");
-        System.out.println(tree.buscar("dog"));
-                System.out.println(tree.buscar("homework"));
-                System.out.println(tree.existe("man"));
-                System.out.println(tree.existe("homework"));
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -206,32 +202,19 @@ public class Main extends javax.swing.JFrame {
                 //lee una linea del archivo 
                 datos= lector1.readLine();
                 String traducido="";
-                System.out.println(datos);
                 while (datos!=null){
                     //elimina los espacios
-                    System.out.println(datos+"***");
-                    datos = datos.replaceAll(" ", "-");
-                    System.out.println(datos+"***");
-                   String[] partir = datos.split("-");
-                   System.out.println(partir.length);
+                   String[] partir = datos.split(" ");
                    for (int n=0; n<partir.length; n++){
-                       System.out.println(partir[n]);
-                       System.out.println(n);
                        if (tree.existe(partir[n])){
-                           traducido += tree.buscar(partir[n]);
+                           traducido += tree.buscar(partir[n])+ " ";
                        }
                        else{
-                           traducido += "*"+ partir[n] +"*";
+                           traducido += "*"+ partir[n] +"*" + " ";
                        }
-                       System.out.println(traducido);
                    }
                    datos= lector1.readLine();
                 }
-                System.out.println(tree.buscar("dog"));
-                System.out.println(tree.buscar("homework"));
-                System.out.println(tree.existe("man"));
-                System.out.println(tree.existe("homework"));
-                
                 jTextArea1.append(traducido + "\n");
             }
             catch(Exception e){

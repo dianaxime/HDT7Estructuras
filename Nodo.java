@@ -33,6 +33,6 @@ public class Nodo {
     }
     
     public String data(){
-        return this.key + " "+ this.value;
+        return this.key + ": "+ this.value;
     }
 }
