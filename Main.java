@@ -138,6 +138,10 @@ public class Main extends javax.swing.JFrame {
          //borra los datos del cuadro de texto
         jTextArea1.setEditable(true);
         jTextArea1.setText("");
+        System.out.println(tree.buscar("dog"));
+                System.out.println(tree.buscar("homework"));
+                System.out.println(tree.existe("man"));
+                System.out.println(tree.existe("homework"));
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -203,43 +207,31 @@ public class Main extends javax.swing.JFrame {
                 datos= lector1.readLine();
                 String traducido="";
                 System.out.println(datos);
-                /*while (datos!=null){
+                while (datos!=null){
                     //elimina los espacios
                     System.out.println(datos+"***");
-                   String partes[] = datos.split("");
-                   //recorre las partes 
-                   for (int k=0; k<partes.length; k++){
-                       String palabra = tree.buscar(partes[k]);
-                       System.out.println(partes[k]);
-                       System.out.println(k);
-                       //if (palabra!=null){
-                           traducido += palabra;
-                           palabra = null;
-                       //}
-                       //else{
-                           traducido += "*"+ partes[k] +"*";
-                       //}
+                    datos = datos.replaceAll(" ", "-");
+                    System.out.println(datos+"***");
+                   String[] partir = datos.split("-");
+                   System.out.println(partir.length);
+                   for (int n=0; n<partir.length; n++){
+                       System.out.println(partir[n]);
+                       System.out.println(n);
+                       if (tree.existe(partir[n])){
+                           traducido += tree.buscar(partir[n]);
+                       }
+                       else{
+                           traducido += "*"+ partir[n] +"*";
+                       }
                        System.out.println(traducido);
                    }
                    datos= lector1.readLine();
-                }*/
-                Scanner input;
-                input = new Scanner(lector1);
-                while (input.hasNextLine()) {
-                    String line = input.next();
-                    System.out.println(line);
-                    String palabra = tree.buscar(line);
-                    if (palabra!=null){
-                        traducido += palabra;
-                        palabra = null;
-                    }
-                    else{
-                        traducido += "*"+ line +"*";
-                    }
                 }
-                input.close();
                 System.out.println(tree.buscar("dog"));
                 System.out.println(tree.buscar("homework"));
+                System.out.println(tree.existe("man"));
+                System.out.println(tree.existe("homework"));
+                
                 jTextArea1.append(traducido + "\n");
             }
             catch(Exception e){
@@ -282,7 +274,7 @@ public class Main extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

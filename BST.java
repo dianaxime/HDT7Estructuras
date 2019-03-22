@@ -80,4 +80,24 @@ public class BST {
             return busqueda(root.right, item);
         } 
     } 
+    // busca el item correspondiente
+    public boolean existe(String item){
+        Nodo a = existir(root, item);
+        if (a==null){
+            return false;
+        }
+        return true;
+    }
+    //utiliza recursion para encontrar el item
+    public Nodo existir(Nodo root, String item) { 
+        comparador.setStrength(Collator.SECONDARY);
+        if (root==null || comparador.compare(root.key,item)==0 ) {
+            return root;
+        } else if (comparador.compare(root.key ,item)>0){
+            return busqueda(root.left, item);
+        }
+        else{
+            return busqueda(root.right, item);
+        } 
+    } 
 }
